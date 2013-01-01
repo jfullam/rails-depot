@@ -1,0 +1,9 @@
+---
+applications:
+- name: depot
+  framework: rails3
+  runtime: ruby19
+  memory: 256M
+  instances: 1
+  url: jf-depot.${target-base}
+  path: .
