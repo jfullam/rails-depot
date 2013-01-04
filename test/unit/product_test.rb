@@ -12,18 +12,21 @@ class ProductTest < ActiveSupport::TestCase
   end
 
   test "price is great than 0" do
-    product = Product.new title: "unique", description:"blah, blah", image_url: "dkd.gif"
+    product = Product.new title: "unique10asdfasdfasdfas", description:"blah, blah", image_url: "dkd.gif"
+
+    product.price = 1
+    assert product.valid?, "A price of #{product.price} should be valid as it's greater than 0."
+    assert product.errors[:price].empty?
+
     product.price = 0
     assert product.invalid?
     assert product.errors[:price].any?
 
-    product.price = 1
-    assert product.valid?
-    assert product.errors[:price].empty?
+
   end
 
   def create_new_product(image_url)
-    product = Product.new title: 'unique', description: "desc", price: 0.90, image_url: image_url
+    product = Product.new title: 'unique20sdfasdfasdf', description: "desc", price: 0.90, image_url: image_url
   end
 
   test "image url is valid" do
